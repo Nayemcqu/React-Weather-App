@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react"
 
-export function useGeoLocation(){
+export default function useGeoLocation(){
 const [isloading,setIsLoading]=useState(true);
 const [error,setError]=useState(null);
 const [data,setdata]=useState({});
@@ -8,7 +8,7 @@ const [data,setdata]=useState({});
 useEffect(()=>{
 
 const  onsucces=(e)=>{
-    setIsLoading(false);
+setIsLoading(false);
     setError(null);
     setdata(e.coords);
 }
@@ -23,5 +23,6 @@ navigator.geolocation.getCurrentPosition(onsucces,onError);
 
 },[])
 
+return { isloading, error, data };
 
 }
