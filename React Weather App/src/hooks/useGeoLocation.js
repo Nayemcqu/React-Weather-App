@@ -9,8 +9,8 @@ useEffect(()=>{
 
 const  onsucces=(e)=>{
 setIsLoading(false);
-    setError(null);
-    setdata(e.coords);
+setError(null);
+setdata(e.coords);
 }
 
 const onError=(e)=>{
