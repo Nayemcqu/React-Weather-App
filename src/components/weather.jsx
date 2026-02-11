@@ -34,7 +34,7 @@ setCity("");
 }
 
 return(
-<section className="overflow-x-hidden container mx-auto  flex justify-center items-center flex-col">
+<section className="overflow-x-hidden container mx-auto   flex justify-center items-center flex-col">
 
 
 <div className="bg-white px-8 py-4 mb-10 mt-10 shadow-2xl rounded-3xl backdrop-blur-lg opacity-90">
