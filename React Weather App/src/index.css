@@ -1,2 +1,35 @@
 @import "tailwindcss";
 
+@layer base{
+body{
+
+    @apply bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen;
+}
+
+}
+
+@keyframes marquee{
+0%{
+  transform:translateX(0);
+}
+100%{
+  transform:translateX(-50%);
+}
+
+}
+
+
+
+@layer utilities{
+
+
+
+
+.animate-marquee{
+animation:marquee 20s linear infinite;
+
+}
+
+}
+
+

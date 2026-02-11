@@ -2,7 +2,7 @@ import axios from 'axios';
 const weatherUrl='https://api.openweathermap.org/data/2.5'
 const currentWeatherurl=`${weatherUrl}/weather`
 const currentForeccastUrl=`${weatherUrl}/forecast`
-
+export const weatherIconUrl='https://openweathermap.org/img/wn/10d@2x.png'
 const apiKey=import.meta.env.VITE_API_KEY;
 export const fethcWeatherByCoords=async({geoData})=>{
 

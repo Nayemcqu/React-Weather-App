@@ -11,10 +11,13 @@ queryKey:['Weather',geoData || searchQuery],
 
 queryFn:()=>searchQuery ? fethcWeatherByCity({searchQuery}) :
 fethcWeatherByCoords({geoData}),
-retry:1,
+retry: 1,
+refetchOnWindowFocus: false,
+
 enabled:((!!geoData?.latitude && !! geoData.longitude) || !!searchQuery),
 staleTime:60*60*1000,
 cacheTime:60*60*1000,
+
     });
 return {data,error,isLoading}
 
