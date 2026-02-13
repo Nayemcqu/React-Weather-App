@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useFetchWeather } from "../hooks/useFetchWeather";
 import  useGeoLocation  from "../hooks/useGeoLocation";
 import { WeatherCard } from "./WeatherCard";
 import { Forecast } from "./Forecast";
+import { Button } from "../ui/Button";
 
 export default function Weather(){
+
+ const [smScreen,setSmScreen]=useState();   
+
+useEffect(()=>{
+function checkScreen() {
+setSmScreen(window.innerWidth<=450);
+    
+}
+
+
+checkScreen();
+
+window.addEventListener("resize",checkScreen);
+return ()=>{
+window.removeEventListener('resize',checkScreen);
+}
+
+},[]);
+
 
 const {isloading,error,data:geoData}=useGeoLocation();
 
@@ -37,7 +57,7 @@ return(
 <section className="overflow-x-hidden container mx-auto   flex justify-center items-center flex-col">
 
 
-<div className="bg-white px-8 py-4 mb-10 mt-10 shadow-2xl rounded-3xl backdrop-blur-lg opacity-90">
+<div className="bg-white px-2 py-2 sm:px-8 sm:py-4 mb-10 mt-10 shadow-2xl rounded-3xl backdrop-blur-lg opacity-90">
 
 <div>
 <form onSubmit={handleSearch}>
@@ -45,10 +65,10 @@ return(
  placeholder="Enter City Name"
 value={city}
 onChange={(e)=>setCity(e.target.value)}
- className="p-2 border border-gray-300  shadow-2xl rounded-4xl 
-px-6 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"/> 
+ className="p-2 border border-gray-300  shadow-2xl rounded-4xl px-2 py-1
+sm:px-6 sm:py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"/> 
 
-<button type="submit" className="ml-4  border-2 border-blue-300  bg-blue-500 px-8 py-2 rounded-full cursor-pointer shadow-xl hover:bg-blue-400 text-white transition-all focus:outline-none">Search </button>
+<Button type="submit"  size={smScreen ? "sm":"md" }>Search </Button>
 </form>
 </div>
 </div>
